@@ -1,0 +1,20 @@
+<footer>
+    <h3>Recently Visited Pages</h3>
+    <ul>
+        <% if (locals.recentPages && recentPages.length> 0) { %>
+            <% recentPages.forEach(page=> { %>
+                <li>
+                    <a href="<%= page.url %>">
+                        <%= page.name %>
+                    </a>
+                    <a href="/remove/<%= encodeURIComponent(page.url) %>" style="color: red; margin-left: 10px;">X</a>
+                </li>
+            <% }) %>
+        <% } else { %>
+            <li>No recently visited pages.</li>
+        <% } %>
+    </ul>
+    <% if (locals.recentPages && recentPages.length> 0) { %>
+        <a href="/remove-all" style="color: blue;">Remove All</a>
+    <% } %>
+</footer>

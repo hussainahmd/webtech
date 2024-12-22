@@ -1,0 +1,47 @@
+<%- include('partials/header') %>
+    <h1>Cookies Manager</h1>
+    <form action="/cookies-manager" method="POST">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Value</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (Object.keys(cookies).length===0) { %>
+                    <tr>
+                        <td colspan="3">No cookies found. Please add some cookies.</td>
+                    </tr>
+                <% } else { %>
+                    <% Object.keys(cookies).forEach(name=> { %>
+                        <tr>
+                            <td><input type="text" name="cookies[<%= name %>]" value="<%= name %>"></td>
+                            <td><input type="text" value="<%= cookies[name] %>" readonly></td>
+                            <td>
+                                <button type="button" onclick="deleteCookie('<%= name %>')">Remove</button>
+                            </td>
+                        </tr>
+                    <% }) %>
+                 <% } %>
+            </tbody>
+        </table>
+        <button type="submit">Update Cookies</button>
+    </form>
+    <h2>Add New Cookie</h2>
+    <form action="/cookies-manager/add" method="POST">
+        <label for="cookieName">Name:</label>
+        <input type="text" id="cookieName" name="cookieName" required>
+        <label for="cookieValue">Value:</label>
+        <input type="text" id="cookieValue" name="cookieValue" required>
+        <button type="submit">Add Cookie</button>
+    </form>
+    <script>
+        function deleteCookie(name) {
+            fetch(`/cookies-manager?name=${name}`, { method: 'DELETE' })
+                .then(() => location.reload())
+                .catch(err => console.error(err));
+        }
+    </script>
+<%- include('partials/footer') %>

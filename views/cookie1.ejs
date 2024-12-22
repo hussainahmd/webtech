@@ -1,0 +1,23 @@
+<%- include('partials/header') %>
+    <h1>Cookie Information</h1>
+    <p><strong>Token:</strong>
+        <%= token %>
+    </p>
+    <p><strong>Last Visit Timestamp:</strong>
+        <%= lastVisit %>
+    </p>
+    <p><strong>Current Timestamp:</strong>
+        <%= currentTimestamp %>
+    </p>
+    <p><strong>Time Since Last Visit:</strong>
+        <%= timeSinceLastVisit %> seconds
+    </p>
+
+    <script>
+        // Refresh the page at random intervals between 5 and 15 seconds
+        const randomInterval = Math.floor(Math.random() * 5000) + 5000; // 5-10 seconds
+        setTimeout(() => {
+            location.reload();
+        }, randomInterval);
+    </script>
+<%- include('partials/footer') %>

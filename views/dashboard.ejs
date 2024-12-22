@@ -1,0 +1,52 @@
+<%- include('partials/header') %>
+    <h1>Dashboard</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Year</th>
+                <th>Publisher</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% books.forEach(book=> { %>
+                <tr>
+                    <td>
+                        <%= book.title %>
+                    </td>
+                    <td>
+                        <%= book.author %>
+                    </td>
+                    <td>
+                        <%= book.year %>
+                    </td>
+                    <td>
+                        <%= book.publisher %>
+                    </td>
+                    <td>
+                        <% if (book.image) { %>
+                            <img src="<%= book.image %>" alt="Book Image" width="100">
+                            <% } else { %>
+                                No Image
+                        <% } %>
+                    </td>
+                    <td>
+                        <a href="/update-book/<%= book.id %>">Update</a>
+                        <button onclick="deleteBook('<%= book.id %>')">Remove</button>
+                    </td>
+                </tr>
+             <% }) %>
+        </tbody>
+    </table>
+    <a href="/add-book">Add New Book</a>
+    <script>
+        function deleteBook(id) {
+            fetch(`/dashboard/${id}`, { method: 'DELETE' })
+                .then(() => location.reload())
+                .catch(err => console.error(err));
+        }
+    </script>
+<%- include('partials/footer') %>

@@ -1,0 +1,18 @@
+<%- include('partials/header') %>
+    <h1>Book Information</h1>
+    <p><strong>Title:</strong>
+        <%= book.title %>
+    </p>
+    <p><strong>Author:</strong>
+        <%= book.author %>
+    </p>
+    <p><strong>Published Year:</strong>
+        <%= book.year %>
+    </p>
+    <p><strong>Publisher:</strong>
+        <%= book.publisher %>
+    </p>
+    <% if (book.image) { %>
+        <img src="<%= book.image %>" alt="Book Image" width="200">
+    <% } %>
+<%- include('partials/footer') %>
