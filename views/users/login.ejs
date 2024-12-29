@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form - app3 </title>
+</head>
+
+<body>
+    <% if(locals.message) { %>
+        <h3><%=message%></h3>
+    <% } %>
+
+    <form action="/login" method="POST">
+        <label for="username">User Name</label>                
+        <input type="text" name="username" required> <br><br>
+
+        <!-- <input type="hidden" name="sid" value="<%=session_id%>"/> -->
+
+        <label for="password">Password</label>
+        <input type="password" name="password" required> <br><br>
+
+        <input type="submit"/>
+    </form>        
+</body>
+</html>

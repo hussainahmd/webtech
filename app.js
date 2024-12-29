@@ -3,11 +3,12 @@ const bodyParser = require('body-parser');
 const fileUpload = require('express-fileupload');
 const cookieParser = require('cookie-parser');
 const path = require('path');
+const session = require('express-session');
+
 const booksRoutes = require('./routes/books.js');
 const operationsRoutes = require('./routes/operations.js');
 const cookiesRoutes = require('./routes/cookies.js');
 const recentPagesRoutes = require('./routes/recentPages.js');
-const session = require('express-session');
 
 const app = express();
 
@@ -18,7 +19,7 @@ app.use(cookieParser());
 app.use('/static', express.static(path.join(__dirname, 'public')));
 app.use(
     session({
-        secret: 'secretKey',
+        secret: 'kjbfebdc',
         resave: false,
         saveUninitialized: true,
     })
