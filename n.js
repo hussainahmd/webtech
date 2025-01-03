@@ -25,11 +25,6 @@ app.get("/session-test", function (req, res) {
 
 app.get("/session-test2", function (req, res) {
 
-    // You can send custom headers to browser like this:
-    // here we are setting, so that browser treat the response payload as html and parse it
-
-    //res.setHeader("Content-type", "text/html");
-
     if (req.session.userLoggedIn) {
         res.write(`<br >User is logged in ... Welcome ${req.session.userName} <br> `);
     } else {
