@@ -64,7 +64,6 @@ router.post('/update-book/:id', (req, res) => {
         book.image = handleFileUpload(req.files.image);
     }
 
-    // Save updated books list
     saveBooks(books);
     res.redirect('/dashboard');
 });
