@@ -80,7 +80,6 @@ app.get("/logout", (req, res) => {
     res.redirect("/home");
 })
 
-// Start server to listen for request at some port.
 app.listen(PORT_NUMBER, () => {
     console.log(`Server is listening at ${PORT_NUMBER}`);
 })
